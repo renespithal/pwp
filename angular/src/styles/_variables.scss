@@ -1,0 +1,74 @@
+@import '~@angular/material/theming';
+
+$media-mobile-max: 544px;
+
+$influenceme-blue: (
+    50 : #e7f3fb,
+    100 : #c2e0f4,
+    200 : #9acced,
+    300 : #71b7e6,
+    400 : #52a7e0,
+    500 : #3498db,
+    600 : #2f90d7,
+    700 : #2785d2,
+    800 : #217bcd,
+    900 : #156ac4,
+    A100 : #f5f9ff,
+    A200 : #c2ddff,
+    A400 : #8fc1ff,
+    A700 : #75b3ff,
+    contrast: (
+        50 : #ffffff,
+        100 : #ffffff,
+        200 : #ffffff,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$influenceme-dark: (
+    50 : #e6e8ea,
+    100 : #c0c5cb,
+    200 : #969fa8,
+    300 : #6b7885,
+    400 : #4c5b6a,
+    500 : #2c3e50,
+    600 : #273849,
+    700 : #213040,
+    800 : #1b2837,
+    900 : #101b27,
+    A100 : #68abff,
+    A200 : #358fff,
+    A400 : #0272ff,
+    A700 : #0067e7,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$influence-app-primary: mat-palette($influenceme-blue);
+$influence-app-accent:  mat-palette($influenceme-dark);
+$influence-app-warn:    mat-palette($mat-red);
+
