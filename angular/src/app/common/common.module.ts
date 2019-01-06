@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule as CModule } from '@angular/common';
 import {
     MatRadioModule,
     MatButtonModule,
@@ -58,6 +59,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatAutocompleteModule,
         MatTabsModule,
         MatSortModule,
+        CModule,
     ],
     exports: [
         FormsModule,
@@ -87,6 +89,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatAutocompleteModule,
         MatTabsModule,
         MatSortModule,
+        CModule,
     ]
 })
 export class CommonModule {}
