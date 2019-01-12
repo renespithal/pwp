@@ -27,7 +27,7 @@ class BackendController extends Controller {
         });
 
         return view('angular', [
-            // 'jwt_token' => JWTAuth::fromUser(Auth::user()),
+             'jwt_token' => \JWTAuth::fromUser(Auth::user()),
             'scripts' => $scripts,
             'styles' => $styles
         ]);

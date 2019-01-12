@@ -11,10 +11,8 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Auth::routes();
 
 Route::any('{any?}', 'BackendController@index')
-->where('any', '.*');
-//->middleware('auth');
+    ->where('any', '.*')
+    ->middleware('auth');

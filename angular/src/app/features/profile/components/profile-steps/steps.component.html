@@ -1,14 +1,18 @@
+<mat-card>
+  <h4>Wilkommen bei Mentoree!</h4><br>
+  Um einen passenden Mentor für dich zu finden brauchen wir zunächst einige Informationen über dich
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam corrupti vero ut ullam, porro voluptatibus voluptatem quis ex amet nisi debitis totam itaque aperiam! Officiis, soluta. Quidem quas minima dolores!
+</mat-card>
+
 <mat-horizontal-stepper [linear]="true" #stepper>
-    <mat-step >
-      <form>
-        <ng-template matStepLabel>Profildaten</ng-template>
-        <profile-edit></profile-edit>
-      </form>
-    </mat-step>
-    <mat-step >
-      <form>
-        <ng-template matStepLabel>Fragekatalog</ng-template>
-        <profile-questionary></profile-questionary>
-      </form>
-    </mat-step>
-  </mat-horizontal-stepper>
+  <mat-step [stepControl]="profileEdit.profileForm">
+    <ng-template matStepLabel>Profildaten</ng-template>
+    <profile-edit></profile-edit>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Fragenkatalog</ng-template>
+      <profile-questionary></profile-questionary>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
