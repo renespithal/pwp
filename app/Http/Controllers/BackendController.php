@@ -16,7 +16,7 @@ class BackendController extends Controller {
 
         $files = scandir(public_path('/angular'));
         $scripts = array_filter($files, function($e) {
-            return ends_with($e, '.js');
+            return ! starts_with($e, 'features') && ends_with($e, '.js');
         });
         usort($scripts, function($a, $b) {
             if (stristr($a, 'polyfills')) return -1;

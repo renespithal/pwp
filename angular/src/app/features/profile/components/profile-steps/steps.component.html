@@ -1,18 +1,14 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step >
-      <form >
+      <form>
         <ng-template matStepLabel>Profildaten</ng-template>
-            <profile-edit></profile-edit>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
+        <profile-edit></profile-edit>
       </form>
     </mat-step>
     <mat-step >
-      <form >
+      <form>
         <ng-template matStepLabel>Fragekatalog</ng-template>
         <profile-questionary></profile-questionary>
-        
       </form>
     </mat-step>
   </mat-horizontal-stepper>

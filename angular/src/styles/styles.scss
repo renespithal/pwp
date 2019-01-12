@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 56px !important;
+}
+body, html, .mat-sidenav-container {
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+
+.navigation {
+    padding-top: 55px !important;
+    .mat-list, .mat-list-item, .mat-selection-list {
+        color: whiten(black, 25%);
+        &.active {
+            color: whiten(black, 15%);
+            font-weight: bold;
+        }
+    }
+    .mat-list-item {
+        mat-icon {
+            margin-right: 10px;
+        }
+        &.active {
+            mat-icon {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.content-container {
+    margin: 64px 10px 20px 10px;
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        input {
+            width: 100%;
+        }
+        &.child {
+            margin-left: 10px;
+        }
+    }
+}
+
+.action-container {
+    display: flex; 
+    justify-content: flex-end;
+    &.left {
+        justify-content: flex-start;
+    }
+    margin: 10px 0;
+    .action-item {
+        margin-left: 10px;
+    }
+}
+
+.info-block {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    border-left: orange 2px solid;
+    padding: 10px 10px 5px 10px;
+    margin-bottom: 5px;
+    mat-icon {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+.warn-block {
+    @extend .info-block;
+    border-left: red 2px solid;
+}

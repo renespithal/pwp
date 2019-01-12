@@ -1,18 +1,25 @@
 <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Vorname" value="">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Nachname" value="">
-        </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput autocomplete="given-name" placeholder="Vorname" value="">
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+        <input matInput autocomplete="family-name" placeholder="Nachname" value="">
+    </mat-form-field>
 
-        <mat-form-field>
-        <select matNativeControl required>
-            <option value="">Männlich</option>
-            <option value="">Weiblich</option>
-            <option value="">Keine Angabe</option>
-        </select>
-        </mat-form-field>
-        <button mat-button>Bild hochladen</button>
+    <mat-form-field>
+        <mat-select placeholder="Geschlecht">
+            <mat-option value="0">Männlich</mat-option>
+            <mat-option value="1">Weiblich</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="info-block">
+        <mat-icon>info</mat-icon> Lade mindestens drei Bilder von deinen lieblings Wissenschaftler hoch
+    </div>
+    <button mat-button>Bild hochladen</button>
+
+    <div class="action-container">
+        <button class="action-item" mat-button mat-raised-button matStepperNext>Weiter</button>
+    </div>
 </form>
