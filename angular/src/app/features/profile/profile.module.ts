@@ -6,12 +6,14 @@ import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { ProfileStepsComponent } from './components/profile-steps/steps.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { ProfileImageComponent } from './components/profile-images/profile-images.component';
 
 @NgModule({
     declarations: [
         ProfileStepsComponent,
         ProfileEditComponent,
         ProfileQuestionaryComponent,
+        ProfileImageComponent,
     ],
     imports: [
         CommonModule,

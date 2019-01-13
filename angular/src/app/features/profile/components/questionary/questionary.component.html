@@ -3,6 +3,8 @@
     <div class="step-display"> Frage: {{ currentQuestionIndex + 1 }} / {{ questions.length }} </div>
     <mat-divider></mat-divider>
 
+    <div class="ask-question"> {{ currentQuestion.ask }}</div>
+
     <div [formArrayName]="currentQuestionIndex" class="question">
 
         <div *ngIf="currentQuestion.type == 'select-option'"

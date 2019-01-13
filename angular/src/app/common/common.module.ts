@@ -30,6 +30,7 @@ import {
     MatStepperModule
   } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 
 @NgModule({
     imports: [
@@ -61,6 +62,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatSortModule,
         CModule,
         SpinnerModule,
+
+        FileUploadModule,
     ],
     exports: [
         FormsModule,
@@ -91,6 +94,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatTabsModule,
         MatSortModule,
         CModule,
+
+        FileUploadModule,
     ],
     providers: [
         {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}

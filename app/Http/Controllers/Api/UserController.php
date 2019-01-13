@@ -79,6 +79,16 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param User $user
+     */
+    public function uploadImage(Request $request, User $user) {
+
+
+
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\User  $user

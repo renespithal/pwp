@@ -32,7 +32,7 @@ const questions: Question[] =
     {
         type: 'select-option',
         id: "loved-president",
-        ask: 'Lieblingspräsident',
+        ask: 'Wer ist ihr Lieblingspräsident?',
         options: [{
             key: 'obama',
             value: 'Präsident Obama'
@@ -45,7 +45,7 @@ const questions: Question[] =
     {
         type: 'select-image-option',
         id: 'loved-pet',
-        ask: 'Lieblingstier?',
+        ask: 'Was ist ihr Lieblingstier?',
         images: [{
             key: 'cat',
             title: 'Katze',

@@ -7,12 +7,20 @@
 <mat-horizontal-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="profileEdit.profileForm">
     <ng-template matStepLabel>Profildaten</ng-template>
-    <profile-edit></profile-edit>
+    <div class="step-container">
+      <profile-edit></profile-edit>
+    </div>
   </mat-step>
   <mat-step>
-    <form>
-      <ng-template matStepLabel>Fragenkatalog</ng-template>
+    <ng-template matStepLabel>Bilder</ng-template>
+    <div class="step-container">
+      <profile-images></profile-images>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Fragenkatalog</ng-template>
+    <!-- <div class="step-container"> -->
       <profile-questionary (onQuestionSave)="save()"></profile-questionary>
-    </form>
+    <!-- </div> -->
   </mat-step>
 </mat-horizontal-stepper>

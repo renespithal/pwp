@@ -1,0 +1,26 @@
+<div class="info-block">
+    <mat-icon>info</mat-icon> Lade mindestens drei Bilder von deinen lieblings Wissenschaftler hoch
+</div>
+
+<div 
+    ng2FileDrop
+    (fileOver)="fileOver($event)"
+    (onFileDrop)="fileDrop($event)"
+    [uploader]="uploader"
+    [ngClass]="{'file-over': dropZoneOver}"
+    class="drop-zone">
+
+    <div class="input">
+        <input type="file" 
+            [disabled]="this.uploader.isUploading" 
+            (change)="fileDrop(null)"
+            ng2FileSelect 
+            [uploader]="uploader" />
+    </div>
+
+    <div class="progress" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+</div>
+
+<div class="action-container">
+    <button class="action-item" mat-button mat-raised-button matStepperNext>Weiter</button>
+</div>

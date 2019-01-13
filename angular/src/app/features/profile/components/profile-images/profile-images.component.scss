@@ -1,0 +1,20 @@
+.drop-zone {
+    border: 2px dotted lighten(black, 60%);
+    padding: 5px;
+    &.file-over {
+        border: 2px dotted red;
+    }
+    .input {
+        margin: 5px;
+        margin-left: 0;
+    }
+    .progress {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        background-color: red;
+        height: 2px;
+        width: 0;
+        // margin: 5px;
+    }
+}
