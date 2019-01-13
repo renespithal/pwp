@@ -13,6 +13,13 @@
 
 Auth::routes();
 
+Route::get('/logout', function() {
+    if (\Auth::check()) {
+        \Auth::logout();
+    }
+    return redirect()->to('/');
+});
+
 Route::any('{any?}', 'BackendController@index')
     ->where('any', '.*')
     ->middleware('auth');
