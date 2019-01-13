@@ -1,23 +1,23 @@
 <form [formGroup]="profileForm">
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
         <input matInput 
         formControlName="first_name"
         autocomplete="given-name" placeholder="Vorname">
         <mat-error *ngIf="profileForm.get('first_name').hasError('required')">Es muss ein Vorname angegeben werden</mat-error>
     </mat-form-field>
     
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
         <input matInput 
-        formControlName="last_name"
+        formControlName="name"
         autocomplete="family-name" placeholder="Nachname">
-        <mat-error *ngIf="profileForm.get('last_name').hasError('required')">Es muss ein Nachname angegeben werden</mat-error>
+        <mat-error *ngIf="profileForm.get('name').hasError('required')">Es muss ein Nachname angegeben werden</mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-select formControlName="gender" placeholder="Geschlecht">
-            <mat-option value="0">Männlich</mat-option>
-            <mat-option value="1">Weiblich</mat-option>
+            <mat-option [value]="0">Männlich</mat-option>
+            <mat-option [value]="1">Weiblich</mat-option>
         </mat-select>
         <mat-error *ngIf="profileForm.get('gender').hasError('required')">Bitte wähle dein Geschlecht aus</mat-error>
     </mat-form-field>

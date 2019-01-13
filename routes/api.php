@@ -20,4 +20,7 @@ Route::middleware(['jwt.auth'])->namespace("Api")->group(function(Router $route)
     $route->get('/auth/user', 'AuthController@user');
     $route->post('/auth/logout', 'AuthController@logout');
 
+    //
+    $route->resource('user', 'UserController');
+
 });

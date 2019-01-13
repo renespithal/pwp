@@ -23,9 +23,9 @@ export function startupServiceFactory(startupService: StartupService): Function 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     CommonModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     ResourceModule.forRoot({handler: { provide: ResourceHandler, useClass: CustomResourceHandler, deps: [HttpClient, AuthService, MatSnackBar] }}),
   ],

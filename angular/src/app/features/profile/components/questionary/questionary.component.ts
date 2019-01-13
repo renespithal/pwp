@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Question } from './question';
-import { QuestionService } from './question-service.service';
+import { AuthService } from './../../../../common/services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //import { CommonModule } from '@angular/common';
 //import { BrowserModule } from '@angular/platform-browser';
 //import { CommonModule } from './../../../../common/common.module';
 //import { NgModule } from '@angular/core';
+import { Question } from './questions';
+import questions from './questions';
 
 @Component({
     selector: 'profile-questionary',
@@ -13,46 +15,92 @@ import { QuestionService } from './question-service.service';
 })
 export class ProfileQuestionaryComponent implements OnInit {
 
-  numberOfQuestions: number = 3;
-  currentQuestion: number = 1;
+  @Output() onQuestionSave = new EventEmitter();
 
-  radio: boolean = true;
-  picture: boolean = false;
-  slider: boolean = false;
+  /** */
+  currentQuestionIndex: number = 0;
 
-  pictures: string[] = [];
+  /**  */
+  questions: Question[];
 
-  sliderRange: number = 10;
-  sliderInterval: number = 1;
+  /**  */
+  questionsFormGroup: FormGroup;
 
+  constructor(protected AuthService: AuthService,
+    protected fb: FormBuilder) {
 
+    this.questions = questions;
+    this.resetForm();
+  }
+  
+  /** */
+  ngOnInit() {}
 
-  constructor(private questionService: QuestionService) {
-
+  /**
+   * 
+   */
+  nextQuestion() {
+    if (!(typeof this.questions[this.currentQuestionIndex+1] == "undefined")) {
+      this.currentQuestionIndex++;
+    }
   }
 
-  ngOnInit(){
-    this.pictures.push('/assets/images/blue.png');
-    this.pictures.push('/assets/images/red.png');
-    this.pictures.push('/assets/images/yellow.png');
+  /**
+   * 
+   */
+  prevQuestion() {
+    if (this.currentQuestionIndex > 0) this.currentQuestionIndex--;
   }
 
-  nextQuestion(){
-    if(this.radio == true){
-      this.picture = true;
-      this.slider = false;
-      this.radio = false;
-    }
-    else if(this.picture = true){
-      this.radio = false;
-      this.picture = false;
-      this.slider = true;
-    }
-    else if(this.slider = true){
-    }
-    if(this.currentQuestion<3){
-      this.currentQuestion += 1;
-    }
+  /**
+   * 
+   */
+  saveQuestions() {
+    this.onQuestionSave.emit(this.questionsFormGroup.value);
   }
+
+  /**
+   * 
+   */
+  resetForm() {
+
+    this.questionsFormGroup = this.fb.group({
+      questions: this.fb.array(this.questions.map(q => {
+
+        if (['select-option', 'select-image-option'].includes(q.type)) {
+          return this.fb.group({
+            key: q.id,
+            value: [this.getAnsweredValue(q), Validators.required]
+          })
+        }
+
+      }))
+    })
+  }
+
+  /**
+   * 
+   * @param questionKey
+   */
+  getAnsweredValue(question: Question) {
+
+    const answers = this.AuthService.currentUser().answers;
+
+    let answer = answers.filter(a => {
+      return a.key == question.id;
+    });
+
+    return answer.length == 1 ? answer[0].value : null;
+
+  }
+  
+  /**
+   * 
+   */
+  get currentQuestion(): Question {
+    return this.questions[this.currentQuestionIndex];
+  };
+
+
 
 }

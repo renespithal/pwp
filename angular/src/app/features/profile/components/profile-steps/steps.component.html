@@ -12,7 +12,7 @@
   <mat-step>
     <form>
       <ng-template matStepLabel>Fragenkatalog</ng-template>
-      <profile-questionary></profile-questionary>
+      <profile-questionary (onQuestionSave)="save()"></profile-questionary>
     </form>
   </mat-step>
 </mat-horizontal-stepper>

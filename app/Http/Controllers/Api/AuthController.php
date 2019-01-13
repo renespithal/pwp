@@ -13,8 +13,9 @@ class AuthController extends Controller {
      * @return mixed
      */
     public function user(Request $request) {
-        return $request->user();
-//        return new CurrentUserResource($request->user());
+        return User::where('id', $request->user()->id)
+            ->with(['answers'])
+            ->first();
     }
 
 

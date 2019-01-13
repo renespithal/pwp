@@ -1,19 +1,45 @@
-#counter{
- float: right;
- font-size: 20px;
+@import '../../../../../styles/variables';
+
+.step-display {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
-mat-radio-button {
-  padding-right: 16px;
-  margin: 20px;
-  padding: 20px;
+.question {
+    padding: 20px;
+    padding-top: 30px;
 }
 
-mat-slider {
-  width: 300px;
-  left: 150px;
-}
+mat-radio-group.flex-inline {
+    display: flex;
+    flex-direction: row;
+    mat-radio-button {
+        // margin-right: 10px;
+        flex: 33%;
+        // &:last-child {
+        //     margin-right: 0;
+        // }
+        display: flex;
+        justify-content: center;
 
-#images {
-  left: 150px;
+        .image-wrapper {
+            height: 300px;
+            img {
+                width: inherit;
+                height: inherit;
+                max-width: 100%;
+            }
+        }
+
+    }
+    @media (max-width: $media-mobile-max) {
+        flex: 100%;
+        flex-direction: column;
+        mat-radio-button {
+            margin-bottom: 10px;
+        }
+    }
 }

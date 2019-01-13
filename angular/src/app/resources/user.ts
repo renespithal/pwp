@@ -2,11 +2,18 @@ import { ResourceCRUD, ResourceParams, Resource, ResourceHandler, ResourceAction
 import { Injectable } from "@angular/core";
 import { ResourceCRUDPaginated } from "./common/ResourceCRUD";
 
+export interface IUserAnswer {
+    key: string;
+    value: string;
+}
 
 export interface IUser {
     id: number;
+    first_name: string
+    gender: number;
     name: string;
     email: string;
+    answers: IUserAnswer[]
 }
 
 @Injectable({
@@ -15,7 +22,7 @@ export interface IUser {
 @ResourceParams({
     pathPrefix: '/api/user'
 })
-export class UserResource<UserType extends IUser> extends ResourceCRUDPaginated<any, UserType, UserType> {
+export class UserResource extends ResourceCRUDPaginated<any, IUser, IUser> {
 
     constructor(handler: ResourceHandler) {
         super(handler);

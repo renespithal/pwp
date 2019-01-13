@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { ProfileStepsComponent } from './components/profile-steps/steps.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [

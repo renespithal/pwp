@@ -1,34 +1,52 @@
-<div id="counter">
-  {{currentQuestion}}/{{numberOfQuestions}}
-  </div>
+<form [formGroup]="questionsFormGroup.get('questions')">
 
+    <div class="step-display"> Frage: {{ currentQuestionIndex + 1 }} / {{ questions.length }} </div>
+    <mat-divider></mat-divider>
 
+    <div [formArrayName]="currentQuestionIndex" class="question">
 
-<div *ngIf="radio" class="radio-question">
-  Welchen Präsidenten bevorzugst du ?
-  <form>
-    <mat-radio-group>
-      <mat-radio-button value="1">Donald Trump</mat-radio-button>
-      <mat-radio-button value="2">Barack Obama</mat-radio-button>
-      <mat-radio-button value="2">Bill Clinton</mat-radio-button>
-      <mat-radio-button value="2">John F. Kennedy</mat-radio-button>
-    </mat-radio-group>
-  </form>
-</div>
+        <div *ngIf="currentQuestion.type == 'select-option'"
+            class="question-select-option">
 
-<div *ngIf="picture" class="picture-question">
-  Wähle eines der folgenden Bilder:
-  <form>
-    <mat-radio-group>
-      <mat-radio-button class="radio-button" *ngFor="let picture of pictures" value="1"><img [src]="picture"/></mat-radio-button>
-    </mat-radio-group>
-  </form>
-</div>
+            <mat-radio-group formControlName="value" class="flex-inline">
+                <mat-radio-button *ngFor="let option of currentQuestion.options" [value]="option.key">{{ option.value }}</mat-radio-button>
+            </mat-radio-group>
 
-<div *ngIf="slider" class="slider-question">
-  Wie sehr wünschst du dir Edmund Stoiber als Kanzlerkandidat zurück? <br>
-  <mat-slider  thumbLabel  [displayWith]="formatLabel"  tickInterval=1  min="1"  max=10>
-  </mat-slider>
-</div>
+        </div>
 
-<button mat-button (click)="nextQuestion()">Next Question</button>
+        <div *ngIf="currentQuestion.type == 'select-image-option'"
+            class="question-select-image-option">
+
+            <mat-radio-group formControlName="value" class="flex-inline">
+                <mat-radio-button *ngFor="let image of currentQuestion.images" [value]="image.key">
+                    <div class="image-wrapper">
+                        <img src="{{ image.path }}" title="{{ image.title }}">
+                    </div>
+                </mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+
+        
+    </div>
+    
+    <div class="action-container" [ngSwitch]="currentQuestionIndex">
+        <button class="action-item"
+        *ngIf="currentQuestionIndex > 0"
+        (click)="prevQuestion()"
+        mat-button mat-raised-button matStepperNext>Zurück</button>
+
+        <button class="action-item"
+        *ngSwitchDefault
+        (click)="nextQuestion()"
+        [disabled]="! questionsFormGroup.get(['questions', currentQuestionIndex]).valid"
+        mat-button mat-raised-button matStepperNext>Weiter</button>
+        <button class="action-item"
+        *ngSwitchCase="questions.length - 1"
+        color="primary"
+        (click)="saveQuestions()"
+        [disabled]="! questionsFormGroup.get(['questions', currentQuestionIndex]).valid"
+        mat-button mat-raised-button>Speichern</button>
+    </div>
+    {{ questionsFormGroup.value | json }}
+</form>
