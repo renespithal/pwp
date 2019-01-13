@@ -1,0 +1,45 @@
+stages:
+- build
+- deploy
+
+build:
+  image: node:10.3.0
+  stage: build
+  before_script:
+    - cd angular
+    - npm install
+  script:
+    - npm run build
+  cache:
+      paths:
+        - node_modules/
+        - bower_components/
+  artifacts:
+     name: dist
+     expire_in: 7d
+     paths:
+      - public/angular
+
+
+deploy:
+  image: php:7.0-cli
+  stage: deploy
+  dependencies:
+    - build
+  only:
+    - master
+  environment: live
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo 'ssh installed'
+    - apt-get update -yqq
+    - apt-get install git zip unzip curl wget openssh-client -yqq
+    - git status
+    - ls -la public
+    - ls -la public/angular
+  script:
+    - php deployer.phar deploy
