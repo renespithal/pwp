@@ -22,7 +22,7 @@ host('master')
     ->hostname('pwp.tesders.de')
     ->user('www-pwp')
     ->set('deploy_path', '/var/www/pwp.tesders.de/public_html')
-    ->set('branch', 'master')
+    ->set('branch', 'live')
     ->set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader');
 
 
