@@ -61,7 +61,7 @@ export class MatchingComponent {
      * 
      */
     pickAndPopNextImage() {
-        return this.currentMatching = this.shuffle(this.loadedMatches).pop();
+        return this.currentMatching = this.loadedMatches.pop();
     }
 
     /**
