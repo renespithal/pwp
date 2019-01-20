@@ -18,16 +18,12 @@ export function questionMinMaxAnswered(min: number = null, max:number = null) {
       }
     }
 
-    console.log('NOT PASS');
-    
     if (max != null && selected > max) {
       return {need_less: true};
     }
     if (min != null && selected < min) {
       return {need_more: true};
     }
-
-    console.log('PASS');
 
     return {};
   }
@@ -98,7 +94,7 @@ export class ProfileQuestionaryComponent implements OnInit {
           && q.multiple === true) {
 
             const minAnswered = 'multiple_min' in q
-              && q.multiple_min > 1 ? q.multiple_min : 1; // Standart = 1
+               ? q.multiple_min : 1; // Standart = 1
             const maxAnswered = 'multiple_max' in q
             && q.multiple_max > 0 ? q.multiple_max : null
 

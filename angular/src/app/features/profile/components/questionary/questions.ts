@@ -149,7 +149,7 @@ const questions: Question[] =
         ask: 'Wählen Sie bis zu drei Lieblingsgenres aus.',
         multiple: true,
         multiple_max: 3,
-        multiple_min: 3,
+        multiple_min: null,
         options: [{
             key: 'action',
             value: 'Action'
