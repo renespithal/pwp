@@ -14,6 +14,7 @@ class CurrentUserResource extends JsonResource
      */
     public function toArray($request)
     {
+        $this->resource->load(['images', 'answers']);
         return array_merge(parent::toArray($request), [
             'images' => UserImageResource::collection($this->resource->images)
         ]);

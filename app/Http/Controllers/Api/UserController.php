@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CurrentUserResource;
 use App\Http\Resources\UserImageResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -83,7 +84,7 @@ class UserController extends Controller
 
         $user->update(['profile_complete' => true]);
 
-        return $user;
+        return new CurrentUserResource($user);
     }
 
     /**

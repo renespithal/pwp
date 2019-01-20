@@ -28,7 +28,7 @@
     </div> -->
 
     <div class="image-wrapper" formArrayName="images">
-        <div *ngFor="let image of imageForm.get('images').controls; let i = index" class="image">
+        <div *ngFor="let image of images.controls; let i = index" class="image">
             <mat-card>
                 <mat-card-content>
                     <img src="{{ image.value.url }}">
