@@ -64,8 +64,13 @@ abstract class StatsExport implements FromCollection
             $correspondingAnswer = $answers2->get($answer->key);
             if (!$correspondingAnswer) continue;
 
-            if ($answer->value == $correspondingAnswer->value) {
-                $answered[] = 1;
+            $answerMatchA = collect(explode("$", $answer->value));
+            $answerMatchB = collect(explode("$", $correspondingAnswer->value));
+
+            $maxAnswers = collect($answerMatchA->count(), $answerMatchB->count())->max();
+
+            if ($intersectCount = $answerMatchA->intersect($answerMatchB)->count()) {
+                $answered[] = $intersectCount / $maxAnswers;
             } else {
                 $answered[] = 0;
             }
