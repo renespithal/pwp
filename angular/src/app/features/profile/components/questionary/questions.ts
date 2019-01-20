@@ -35,6 +35,7 @@ export type Question = SelectOptionQuestion | SelectImageQuestion;
 
 const questions: Question[] = 
 [
+
     {
         type: 'select-option',
         id: "loved-president",

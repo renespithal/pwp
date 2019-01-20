@@ -18,13 +18,16 @@ export function questionMinMaxAnswered(min: number = null, max:number = null) {
       }
     }
 
-    console.log(selected, min, max);
+    console.log('NOT PASS');
+    
     if (max != null && selected > max) {
       return {need_less: true};
     }
     if (min != null && selected < min) {
       return {need_more: true};
     }
+
+    console.log('PASS');
 
     return {};
   }
@@ -130,6 +133,8 @@ export class ProfileQuestionaryComponent implements OnInit {
 
       }))
     })
+
+    console.log(this.questionsFormGroup);
 
   }
 
