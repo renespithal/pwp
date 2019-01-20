@@ -104,11 +104,14 @@ export class ProfileQuestionaryComponent implements OnInit {
               values[o.key] = this.fb.control(false);
             })
 
-            this.getAnsweredValue(q)
-              .split('$')
+            let answers = this.getAnsweredValue(q);
+
+            if (answers) {
+              answers.split('$')
               .forEach(v => {
                 Object.assign(values, {[v]: this.fb.control(true)});
               });
+            }
 
             return this.fb.group({
               key: q.id,
