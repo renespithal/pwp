@@ -61,7 +61,86 @@ const questions: Question[] =
             title: 'Hund',
             path: '/angular/assets/images/dog.jpg'
         }]
-    }
+    },
+
+    {
+        type: 'select-image-option',
+        id: 'loved-newspaper',
+        ask: 'Sie haben Geld für zwei Zeitungen, für welche beiden entscheiden Sie sich?',
+        multiple: true,
+        multiple_min: 2,
+        multiple_max: 2,
+        options: [{
+            key: 'postillon',
+            title: 'Der Postillon',
+            path: '/angular/assets/images/postillon.jpg'
+        },{
+            key: 'bild',
+            title: 'Bild Zeitung',
+            path: '/angular/assets/images/bildZeitung.jpg'
+        },{
+            key: 'zeit',
+            title: 'Die Zeit',
+            path: '/angular/assets/images/dieZeit.jpg'
+        },{
+            key: 'bravo',
+            title: 'Bravo',
+            path: '/angular/assets/images/bravo.jpg'
+        }]
+    },
+
+    {
+        type: 'select-image-option',
+        id: 'loved-holiday',
+        ask: 'Wo würden Sie am liebsten Ihren Urlaub verbringen',
+        options: [{
+            key: 'eifelturm',
+            title: 'Eifelturm',
+            path: '/angular/assets/images/eifelturm.jpg'
+        },{
+            key: 'pyramide',
+            title: 'Pyramide',
+            path: '/angular/assets/images/pyramide.jpg'
+        },{
+            key: 'strand',
+            title: 'Strand',
+            path: '/angular/assets/images/strand.jpg'
+        }]
+    },
+
+    {
+        type: 'select-image-option',
+        id: 'loved-ad',
+        ask: 'Welche Werbung halten Sie für gelungen?',
+        options: [{
+            key: 'fruites',
+            title: 'Fruites',
+            path: '/angular/assets/images/werbung1.jpg'
+        },{
+            key: 'partei',
+            title: 'Die Partei',
+            path: '/angular/assets/images/werbung2.jpg'
+        },{
+            key: 'ritter',
+            title: 'Ritter Sport',
+            path: '/angular/assets/images/werbung3.jpg'
+        }]
+    },
+
+    {
+        type: 'select-image-option',
+        id: 'loved-brand',
+        ask: 'Was bevorzugen Sie zum arbeiten?',
+        options: [{
+            key: 'apple',
+            title: 'Apple',
+            path: '/angular/assets/images/apple.png'
+        },{
+            key: 'windows',
+            title: 'Windows',
+            path: '/angular/assets/images/windows.png'
+        }]
+    },
 
 ];
 
