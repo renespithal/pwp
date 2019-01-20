@@ -24,4 +24,9 @@ Route::middleware(['jwt.auth'])->namespace("Api")->group(function(Router $route)
     $route->post('/user/{user}/uploadimage', 'UserController@uploadimage');
     $route->resource('user', 'UserController');
 
+    //
+    $route->post('/user/{user}/matches/match/{image}', 'User\MatchController@match');
+    $route->resource('user.matches', 'User\MatchController');
+
+
 });

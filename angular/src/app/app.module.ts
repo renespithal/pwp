@@ -12,6 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthService } from './common/services/auth.service';
 import { MatSnackBar, GestureConfig } from '@angular/material';
 import { StartupService } from './common/services/startup.service';
+import { RoutingComponent } from './common/components/routing.component';
 
 export function startupServiceFactory(startupService: StartupService): Function {
   return () => startupService.load();
@@ -19,7 +20,8 @@ export function startupServiceFactory(startupService: StartupService): Function 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,

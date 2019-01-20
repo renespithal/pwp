@@ -15,9 +15,13 @@
                 <mat-icon>arrow_back_ios</mat-icon>
                 Übernahme stoppen
             </a> -->
-            <a mat-list-item [routerLink]="['/']" routerLinkActive="active">
+            <a mat-list-item [routerLink]="['/profile']" routerLinkActive="active">
                 <mat-icon>person</mat-icon>
                 Profil bearbeiten
+            </a>
+            <a mat-list-item *ngIf="user.profile_complete" [routerLink]="['/match']" routerLinkActive="active">
+                <mat-icon>favorite</mat-icon>
+                Matching
             </a>
             <a (click)="logout()" mat-list-item>
                 <mat-icon>exit_to_app</mat-icon>

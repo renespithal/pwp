@@ -1,5 +1,6 @@
 import { AuthService } from './common/services/auth.service';
 import { Component } from '@angular/core';
+import { IUser } from './resources/user';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(protected authService: AuthService) {}
+  user: IUser;
+
+  constructor(protected authService: AuthService) {
+    this.user = this.authService.currentUser();
+  }
 
   logout() {
     this.authService.logout();

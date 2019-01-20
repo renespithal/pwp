@@ -11,7 +11,7 @@
       <profile-edit></profile-edit>
     </div>
   </mat-step>
-  <mat-step>
+  <mat-step [stepControl]="profileImages.imageForm">
     <ng-template matStepLabel>Bilder</ng-template>
     <div class="step-container">
       <profile-images></profile-images>

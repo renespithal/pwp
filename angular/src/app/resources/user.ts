@@ -7,13 +7,21 @@ export interface IUserAnswer {
     value: string;
 }
 
+export interface IUserImage {
+    id: number;
+    path: string;
+    url: string;
+}
+
 export interface IUser {
     id: number;
     first_name: string
     gender: number;
     name: string;
     email: string;
-    answers: IUserAnswer[]
+    profile_complete: boolean;
+    answers: IUserAnswer[];
+    images: IUserImage[];
 }
 
 @Injectable({

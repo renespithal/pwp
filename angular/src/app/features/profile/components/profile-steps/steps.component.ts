@@ -1,3 +1,4 @@
+import { ProfileImageComponent } from './../profile-images/profile-images.component';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from './../../../../common/services/auth.service';
 import { UserResource } from './../../../../resources/user';
@@ -6,6 +7,7 @@ import { ProfileQuestionaryComponent } from './../questionary/questionary.compon
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileEditComponent } from '../profile-edit/edit.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'profile-steps',
@@ -21,6 +23,9 @@ export class ProfileStepsComponent implements OnInit {
     @ViewChild(ProfileQuestionaryComponent) profileQuestions: ProfileQuestionaryComponent;
 
     /** */
+    @ViewChild(ProfileImageComponent) profileImages: ProfileImageComponent;
+
+    /** */
     profileFormGroup: FormGroup;
 
     /**
@@ -29,6 +34,7 @@ export class ProfileStepsComponent implements OnInit {
     constructor(protected fb: FormBuilder,
         protected authService: AuthService,
         protected userResource: UserResource,
+        protected router: Router,
         protected matSnackBar: MatSnackBar,
         protected spinnerService: SpinnerService) {
     }
@@ -39,7 +45,8 @@ export class ProfileStepsComponent implements OnInit {
     ngOnInit() {
         this.profileFormGroup = this.fb.group({
             profile: this.profileEdit.profileForm,
-            questions: this.profileQuestions.questionsFormGroup
+            questions: this.profileQuestions.questionsFormGroup,
+            images: this.profileImages.imageForm
         })
 
     }
@@ -51,9 +58,12 @@ export class ProfileStepsComponent implements OnInit {
         let q = this.userResource.update(Object.assign(
             {id: this.authService.currentUser().id},
             this.profileFormGroup.get('profile').value,
+            {images: this.profileFormGroup.get('images').value},
             {questions: this.profileFormGroup.get('questions').value}    
         ));
-        q.then(() => {
+        q.then(user => {
+            this.router.navigate(['match']);
+            this.authService.setUser(user);
             this.matSnackBar.open("Erfolgreich gespeichert");
         })
         this.spinnerService.spinPromise(q);

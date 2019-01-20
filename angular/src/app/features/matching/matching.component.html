@@ -1,0 +1,38 @@
+<div *ngIf="currentMatching">
+
+    <div class="match-container">
+
+        <div class="match">
+
+            <img src="{{currentMatching.url}}">
+
+        </div>
+
+    </div>
+
+    <div class="match-actions">
+
+        <div class="wrap">
+
+            <button (click)="noMatch(currentMatching)" color="warn" mat-fab>
+                <mat-icon>cancel</mat-icon>
+            </button>
+
+            <button (click)="match(currentMatching)" color="primary" mat-fab>
+                <mat-icon>favorite</mat-icon>
+            </button>
+                
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="loadingComplete && !currentMatching">
+
+    <div class="success">
+        <h3>Alle Bilder bewertet!</h3>
+        <p>Du hast alle für dich verfügbaren Bilder bewertet, probiere es demnächst erneut um neue Bilder zu bewerten</p>
+    </div>
+
+</div>

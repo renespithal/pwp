@@ -1,26 +1,47 @@
-<div class="info-block">
-    <mat-icon>info</mat-icon> Lade mindestens drei Bilder von deinen lieblings Wissenschaftler hoch
-</div>
+<span>Lade drei Bilder von deinen lieblings Wissenschaftlern hoch</span>
 
-<div 
-    ng2FileDrop
-    (fileOver)="fileOver($event)"
-    (onFileDrop)="fileDrop($event)"
-    [uploader]="uploader"
-    [ngClass]="{'file-over': dropZoneOver}"
-    class="drop-zone">
+<form [formGroup]="imageForm">
+    <div 
+        ng2FileDrop
+        (fileOver)="fileOver($event)"
+        (onFileDrop)="fileDrop($event)"
+        [uploader]="uploader"
+        [ngClass]="{'file-over': dropZoneOver}"
+        class="drop-zone">
 
-    <div class="input">
-        <input type="file" 
-            [disabled]="this.uploader.isUploading" 
-            (change)="fileDrop(null)"
-            ng2FileSelect 
-            [uploader]="uploader" />
+        <div class="input">
+            <input type="file" 
+                [disabled]="this.uploader.isUploading" 
+                (change)="fileDrop(null)"
+                ng2FileSelect 
+                [uploader]="uploader" />
+        </div>
+
+        <div class="progress" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
     </div>
 
-    <div class="progress" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-</div>
+    <!-- <div *ngIf="!imageForm.get('images').valid" class="info-block">
+        <mat-icon>warning</mat-icon> 
+        <ng-container *ngIf="imageForm.get('images').hasError('need_more_images')">
+            Es werden mehr Bilder benötigt
+        </ng-container>
+    </div> -->
 
-<div class="action-container">
-    <button class="action-item" mat-button mat-raised-button matStepperNext>Weiter</button>
-</div>
+    <div class="image-wrapper" formArrayName="images">
+        <div *ngFor="let image of imageForm.get('images').controls; let i = index" class="image">
+            <mat-card>
+                <mat-card-content>
+                    <img src="{{ image.value.url }}">
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button (click)="removeImage(image.value)" mat-button>ENTFERNEN</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="action-container">
+        <button class="action-item" (click)="next()" mat-button mat-raised-button matStepperNext>Weiter</button>
+    </div>
+</form>
