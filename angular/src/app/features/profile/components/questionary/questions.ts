@@ -38,7 +38,6 @@ const questions: Question[] =
     {
         type: 'select-option',
         id: "loved-president",
-        // multiple: true,
         ask: 'Wer ist ihr Lieblingspräsident?',
         options: [{
             key: 'obama',
@@ -52,7 +51,6 @@ const questions: Question[] =
     {
         type: 'select-image-option',
         id: 'loved-pet',
-        // multiple: true,
         ask: 'Was ist ihr Lieblingstier?',
         options: [{
             key: 'cat',

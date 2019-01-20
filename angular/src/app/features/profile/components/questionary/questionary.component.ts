@@ -1,11 +1,36 @@
 import { AuthService } from './../../../../common/services/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //import { CommonModule } from '@angular/common';
 //import { BrowserModule } from '@angular/platform-browser';
 //import { CommonModule } from './../../../../common/common.module';
 //import { NgModule } from '@angular/core';
 import questions, { Question } from './questions';
+
+export function questionMinMaxAnswered(min: number = null, max:number = null) {
+
+  return (control: FormGroup) => {
+
+    let selected: number = 0;
+    for (let c of Object.values(control.controls)) {
+      if (c.value === true) {
+        selected++;
+      }
+    }
+
+    console.log(selected, min, max);
+    if (max != null && selected > max) {
+      return {need_less: true};
+    }
+    if (min != null && selected < min) {
+      return {need_more: true};
+    }
+
+    return {};
+  }
+
+}
+
 
 @Component({
     selector: 'profile-questionary',
@@ -69,6 +94,11 @@ export class ProfileQuestionaryComponent implements OnInit {
         if (typeof q.multiple != 'undefined'
           && q.multiple === true) {
 
+            const minAnswered = 'multiple_min' in q
+              && q.multiple_min > 1 ? q.multiple_min : 1; // Standart = 1
+            const maxAnswered = 'multiple_max' in q
+            && q.multiple_max > 0 ? q.multiple_max : null
+
             let values = {};
             (q.options as any[]).forEach(o => {
               values[o.key] = this.fb.control(false);
@@ -82,7 +112,10 @@ export class ProfileQuestionaryComponent implements OnInit {
 
             return this.fb.group({
               key: q.id,
-              values: this.fb.group(values)// TODO Validators
+              values: this.fb.group(
+                values, 
+                {validator: questionMinMaxAnswered(minAnswered, maxAnswered)}
+              )
             })
 
         } else {
@@ -94,8 +127,6 @@ export class ProfileQuestionaryComponent implements OnInit {
 
       }))
     })
-
-    console.log(this.questionsFormGroup.value);
 
   }
 
