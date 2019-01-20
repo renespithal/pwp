@@ -143,6 +143,37 @@ const questions: Question[] =
         }]
     },
 
+    {
+        type: 'select-option',
+        id: "loved-genres",
+        ask: 'Wählen Sie bis zu drei Lieblingsgenres aus.',
+        multiple: true,
+        multiple_max: 3,
+        multiple_min: 3,
+        options: [{
+            key: 'action',
+            value: 'Action'
+        },{
+            key: 'comedy',
+            value: 'Comedy'
+        },{
+            key: 'drama',
+            value: 'Drama'
+        },{
+            key: 'fantasy',
+            value: 'Fantasy'
+        },{
+            key: 'horror',
+            value: 'Horror'
+        },{
+            key: 'science fiction',
+            value: 'Science fiction'
+        },{
+            key: 'western',
+            value: 'Western'
+        }]
+    },
+
 ];
 
 
