@@ -6,7 +6,13 @@ export interface AbstractQuestion {
     id: string;
 }
 
-export interface SelectOptionQuestion extends AbstractQuestion {
+export interface AbstractMultipleQuestions extends AbstractQuestion {
+    multiple?: boolean;
+    multiple_min?: number;
+    multiple_max?: number;
+}
+
+export interface SelectOptionQuestion extends AbstractMultipleQuestions {
     type: 'select-option';
     ask: string;
     options: {
@@ -15,10 +21,10 @@ export interface SelectOptionQuestion extends AbstractQuestion {
     }[];
 }
 
-export interface SelectImageQuestion extends AbstractQuestion {
+export interface SelectImageQuestion extends AbstractMultipleQuestions {
     type: 'select-image-option';
     ask: string;
-    images: {
+    options: {
         key: string;
         path: string;
         title: string;
@@ -32,6 +38,7 @@ const questions: Question[] =
     {
         type: 'select-option',
         id: "loved-president",
+        // multiple: true,
         ask: 'Wer ist ihr Lieblingspräsident?',
         options: [{
             key: 'obama',
@@ -45,8 +52,9 @@ const questions: Question[] =
     {
         type: 'select-image-option',
         id: 'loved-pet',
+        // multiple: true,
         ask: 'Was ist ihr Lieblingstier?',
-        images: [{
+        options: [{
             key: 'cat',
             title: 'Katze',
             path: '/angular/assets/images/cat.jpg'

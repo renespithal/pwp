@@ -20,6 +20,9 @@ Route::get('/logout', function() {
     return redirect()->to('/');
 });
 
+Route::any('/export', 'HomeController@exportStats')
+    ->middleware('auth');
+
 Route::any('{any?}', 'BackendController@index')
     ->where('any', '.*')
     ->middleware('auth');

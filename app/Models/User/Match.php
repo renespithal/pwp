@@ -7,6 +7,7 @@
 namespace App\Models\User;
 
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model {
@@ -24,5 +25,12 @@ class Match extends Model {
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function toUser() {
+        return $this->hasOne(User::class, 'id', 'to_user_id');
+    }
 
 }

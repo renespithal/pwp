@@ -10,22 +10,49 @@
         <div *ngIf="currentQuestion.type == 'select-option'"
             class="question-select-option">
 
-            <mat-radio-group formControlName="value" class="flex-inline">
-                <mat-radio-button *ngFor="let option of currentQuestion.options" [value]="option.key">{{ option.value }}</mat-radio-button>
-            </mat-radio-group>
+            <ng-container *ngIf="currentQuestion.multiple">
+                <div formGroupName="values" class="checkbox-wrapper flex-inline">
+                    <mat-checkbox 
+                        *ngFor="let option of currentQuestion.options; let i = index"
+                        [formControlName]="option.key">
+                        {{ option.value }}
+                    </mat-checkbox>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!currentQuestion.multiple">
+                <mat-radio-group formControlName="value" class="flex-inline">
+                    <mat-radio-button *ngFor="let option of currentQuestion.options" [value]="option.key">{{ option.value }}</mat-radio-button>
+                </mat-radio-group>
+            </ng-container>
 
         </div>
 
         <div *ngIf="currentQuestion.type == 'select-image-option'"
             class="question-select-image-option">
 
-            <mat-radio-group formControlName="value" class="flex-inline">
-                <mat-radio-button *ngFor="let image of currentQuestion.images" [value]="image.key">
-                    <div class="image-wrapper">
-                        <img src="{{ image.path }}" title="{{ image.title }}">
-                    </div>
-                </mat-radio-button>
-            </mat-radio-group>
+            <ng-container *ngIf="currentQuestion.multiple">
+                <div formGroupName="values" class="checkbox-wrapper flex-inline">
+                    <mat-checkbox 
+                    *ngFor="let image of currentQuestion.options"    
+                    [formControlName]="image.key" >
+                        <div class="image-wrapper">
+                            <img src="{{ image.path }}" title="{{ image.title }}">
+                        </div>
+                    </mat-checkbox>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!currentQuestion.multiple">
+                <mat-radio-group formControlName="value" class="flex-inline">
+                    <mat-radio-button *ngFor="let image of currentQuestion.options" [value]="image.key">
+                        <div class="image-wrapper">
+                            <img src="{{ image.path }}" title="{{ image.title }}">
+                        </div>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </ng-container>
+
 
         </div>
 

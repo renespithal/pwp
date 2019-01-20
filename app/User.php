@@ -50,4 +50,20 @@ class User extends Authenticatable
         return $this->hasMany(Match::class, 'from_user_id', 'id');
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeMentors($query) {
+        return $query->where('type', 'mentor');
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeMentees($query) {
+        return $query->where('type', 'mentee');
+    }
+
 }

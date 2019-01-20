@@ -47,6 +47,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="type" class="col-md-4 col-form-label text-md-right">Art</label>
+
+                            <div class="col-md-6">
+                                <select required name="type" class="form-control {{ $errors->has('type') ? ' is-invalid' : '' }}">
+                                    <option value="mentee" selected>Mentee</option>
+                                    <option value="mentor">Mentor</option>
+                                </select>
+
+                                @if ($errors->has('type'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -5,8 +5,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //import { BrowserModule } from '@angular/platform-browser';
 //import { CommonModule } from './../../../../common/common.module';
 //import { NgModule } from '@angular/core';
-import { Question } from './questions';
-import questions from './questions';
+import questions, { Question } from './questions';
 
 @Component({
     selector: 'profile-questionary',
@@ -67,7 +66,26 @@ export class ProfileQuestionaryComponent implements OnInit {
     this.questionsFormGroup = this.fb.group({
       questions: this.fb.array(this.questions.map(q => {
 
-        if (['select-option', 'select-image-option'].includes(q.type)) {
+        if (typeof q.multiple != 'undefined'
+          && q.multiple === true) {
+
+            let values = {};
+            (q.options as any[]).forEach(o => {
+              values[o.key] = this.fb.control(false);
+            })
+
+            this.getAnsweredValue(q)
+              .split('$')
+              .forEach(v => {
+                Object.assign(values, {[v]: this.fb.control(true)});
+              });
+
+            return this.fb.group({
+              key: q.id,
+              values: this.fb.group(values)// TODO Validators
+            })
+
+        } else {
           return this.fb.group({
             key: q.id,
             value: [this.getAnsweredValue(q), Validators.required]
@@ -76,13 +94,16 @@ export class ProfileQuestionaryComponent implements OnInit {
 
       }))
     })
+
+    console.log(this.questionsFormGroup.value);
+
   }
 
   /**
    * 
    * @param questionKey
    */
-  getAnsweredValue(question: Question) {
+  getAnsweredValue(question: Question): string {
 
     const answers = this.AuthService.currentUser().answers;
 

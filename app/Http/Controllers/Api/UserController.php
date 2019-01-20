@@ -73,9 +73,19 @@ class UserController extends Controller
         $user->update($request->only(['name', 'first_name', 'gender']));
 
         foreach($request->input('questions.questions') as $answer) {
+
+            $value = isset($answer['value'])
+                    ? $answer['value']
+                    : collect($answer['values'])
+                        ->map(function($v, $k){
+                            return $v ? $k : null;
+                        })
+                        ->filter(function($v) { return $v; })
+                        ->implode('$');
+
             $user->answers()->updateOrCreate(
                 array_only($answer, 'key'),
-                array_only($answer, 'value')
+                ['value' => $value]
             );
         }
 
