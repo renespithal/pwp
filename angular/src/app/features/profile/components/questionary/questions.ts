@@ -35,20 +35,6 @@ export type Question = SelectOptionQuestion | SelectImageQuestion;
 
 const questions: Question[] = 
 [
-
-    {
-        type: 'select-option',
-        id: "loved-president",
-        ask: 'Wer ist ihr Lieblingspräsident?',
-        options: [{
-            key: 'obama',
-            value: 'Präsident Obama'
-        },{
-            key: 'bush',
-            value: 'Präsident Bush'
-        }]
-    },
-
     {
         type: 'select-image-option',
         id: 'loved-pet',
@@ -129,6 +115,28 @@ const questions: Question[] =
     },
 
     {
+        type: 'select-option',
+        id: "loved-hobbies",
+        ask: 'Welche Freizeitaktivität würden Sie bevorzugen?',
+        options: [{
+            key: 'wiesn',
+            value: 'Wiesn'
+        },{
+            key: 'bar',
+            value: 'Bar'
+        },{
+            key: 'kino',
+            value: 'Kino'
+        },{
+            key: 'theater',
+            value: 'Theater'
+        },{
+            key: 'fussballspiel',
+            value: 'Fussballspiel'
+        }]
+    },
+
+    {
         type: 'select-image-option',
         id: 'loved-brand',
         ask: 'Was bevorzugen Sie zum arbeiten?',
@@ -171,6 +179,25 @@ const questions: Question[] =
         },{
             key: 'western',
             value: 'Western'
+        }]
+    },
+
+    {
+        type: 'select-image-option',
+        id: 'loved-image',
+        ask: 'Was spricht Sie am meisten an?',
+        options: [{
+            key: 'kunst',
+            title: 'Kunst',
+            path: '/angular/assets/images/kunst.jpg'
+        },{
+            key: 'technik',
+            title: 'Technik',
+            path: '/angular/assets/images/technik.jpg'
+        },{
+            key: 'sport',
+            title: 'Sport',
+            path: '/angular/assets/images/sport.jpg'
         }]
     },
 
