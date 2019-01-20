@@ -120,7 +120,7 @@ export class ProfileQuestionaryComponent implements OnInit {
               key: q.id,
               values: this.fb.group(
                 values, 
-                // {validator: questionMinMaxAnswered(minAnswered, maxAnswered)}
+                {validator: questionMinMaxAnswered(minAnswered, maxAnswered)}
               )
             })
 

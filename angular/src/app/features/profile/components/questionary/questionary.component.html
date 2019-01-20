@@ -11,7 +11,7 @@
             class="question-select-option">
 
             <ng-container *ngIf="currentQuestion.multiple">
-                <div class="checkbox-wrapper flex-inline">
+                <div [formGroup]="questionsFormGroup.get(['questions', currentQuestionIndex, 'values'])" class="checkbox-wrapper flex-inline">
                     <mat-checkbox 
                         *ngFor="let option of currentQuestion.options; let i = index"
                         [formControl]="questionsFormGroup.get(['questions', currentQuestionIndex, 'values', option.key])">
@@ -32,7 +32,7 @@
             class="question-select-image-option">
 
             <ng-container *ngIf="currentQuestion.multiple">
-                <div class="checkbox-wrapper flex-inline">
+                <div [formGroup]="questionsFormGroup.get(['questions', currentQuestionIndex, 'values'])" class="checkbox-wrapper flex-inline">
                     <mat-checkbox 
                     *ngFor="let image of currentQuestion.options"    
                     [formControl]="questionsFormGroup.get(['questions', currentQuestionIndex, 'values', image.key])">
