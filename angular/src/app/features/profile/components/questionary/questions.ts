@@ -37,7 +37,7 @@ const questions: Question[] =
 [
     {
         type: 'select-image-option',
-        id: 'loved-image',
+        id: 'loved-weekend',
         ask: 'Wie schaut Ihr perfektes Wochenende aus?',
         options: [{
             key: 'wandern',
