@@ -37,6 +37,24 @@ const questions: Question[] =
 [
     {
         type: 'select-image-option',
+        id: 'loved-image',
+        ask: 'Wie schaut Ihr perfektes Wochenende aus?',
+        options: [{
+            key: 'wandern',
+            title: 'Wandern',
+            path: '/angular/assets/images/wandern.jpg'
+        },{
+            key: 'kneipe',
+            title: 'Kneipe',
+            path: '/angular/assets/images/kneipe.jpg'
+        },{
+            key: 'netflix',
+            title: 'Netflix',
+            path: '/angular/assets/images/netflixUi.jpeg'
+        }]
+    },
+    {
+        type: 'select-image-option',
         id: 'loved-pet',
         ask: 'Was ist ihr Lieblingstier?',
         options: [{
@@ -58,21 +76,21 @@ const questions: Question[] =
         multiple_min: 2,
         multiple_max: 2,
         options: [{
-            key: 'postillon',
-            title: 'Der Postillon',
-            path: '/angular/assets/images/postillon.jpg'
+            key: 'szNews',
+            title: 'Sueddeutsche Zeitung',
+            path: '/angular/assets/images/szNews.png'
         },{
-            key: 'bild',
+            key: 'bildNews',
             title: 'Bild Zeitung',
-            path: '/angular/assets/images/bildZeitung.jpg'
+            path: '/angular/assets/images/bildNews.jpg'
         },{
-            key: 'zeit',
-            title: 'Die Zeit',
-            path: '/angular/assets/images/dieZeit.jpg'
+            key: 'bzNews',
+            title: 'BZ Zeitung Berlins',
+            path: '/angular/assets/images/bzNews.jpg'
         },{
-            key: 'bravo',
-            title: 'Bravo',
-            path: '/angular/assets/images/bravo.jpg'
+            key: 'phpNews',
+            title: 'PHP Magazin',
+            path: '/angular/assets/images/phpNews.jpg'
         }]
     },
 
@@ -131,8 +149,8 @@ const questions: Question[] =
             key: 'theater',
             value: 'Theater'
         },{
-            key: 'fussballspiel',
-            value: 'Fussballspiel'
+            key: 'sport',
+            value: 'Sportveranstaltung'
         }]
     },
 
@@ -181,6 +199,7 @@ const questions: Question[] =
             value: 'Western'
         }]
     },
+
 
     {
         type: 'select-image-option',
