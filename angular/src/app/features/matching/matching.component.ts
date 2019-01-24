@@ -3,14 +3,17 @@ import { UserMatchResource } from './../../resources/user/match';
 import { Component } from '@angular/core';
 import { IUserImage } from 'src/app/resources/user';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { fade } from './animations';
 
 @Component({
     selector: 'matching',
     templateUrl: './matching.component.html',
-    styleUrls: ['./matching.component.scss']
+    styleUrls: ['./matching.component.scss'],
+    animations: fade
+
 })
 export class MatchingComponent {
-
+    //state = 'in';
     /**  */
     loadingComplete = false;
 
@@ -79,6 +82,20 @@ export class MatchingComponent {
     noMatch(image: IUserImage) {
         this.effectiveMatching(image, false);   
     }
+
+    /*
+    * called after inital animation is finshed
+    *
+    onDone($event) {
+        this.toggleState();
+    }
+    
+    * changes state of trigger
+    *
+    toggleState() {
+        this.state = this.state === 'in' ? 'out' : 'in';
+    }
+    */
     
     /**
      * 
