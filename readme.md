@@ -29,9 +29,18 @@
 
 `chmod -R 777 $root/bootstrap/cache` Storage Ordner Berechtigung 
 
+`cp $root/.env.example $root/.env` Environmentdatei kopieren 
+
+`APP_URL` in der Datei `$root/.env` konfigurieren (z.B. http://localhost oder http://pwp.dev) 
+
 4: Angular build
 
 `cd $root/angular && npm run build`
+
+5: Document Root des Webservers auf den $root/public Order setzen
+
+PseudoCode: `DocumentRoot = "$root/public"`
+
 
 #### Fehlerbehandlung bei Installation
 
