@@ -19,11 +19,11 @@
 
 3: PHP Umgebung initialisieren
 
-`$root/artisan key:generate` APP-Key generieren (wird für Verschlüsselung benutzt)
+`php $root/artisan key:generate` APP-Key generieren (wird für Verschlüsselung benutzt)
 
-`$root/artisan storage:link` Linkt teile des Storage ordner in den public Ordner
+`php $root/artisan storage:link` Linkt teile des Storage ordner in den public Ordner
 
-`$root/artisan migrate` Migrieren der Datenbank (Aufbauen des DB Schemas)
+`php $root/artisan migrate` Migrieren der Datenbank (Aufbauen des DB Schemas)
 
 `chmod -R 777 $root/storage` Storage Ordner Berechtigung 
 
