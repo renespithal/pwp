@@ -33,6 +33,8 @@
 
 `APP_URL` und Datenbankverbindung in der Datei `$root/.env` konfigurieren (z.B. http://localhost oder http://pwp.dev) 
 
+Datenbankverbindung in der Datei `$root/.env` konfigurieren
+
 4: Angular build
 
 `cd $root/angular && npm run build`
