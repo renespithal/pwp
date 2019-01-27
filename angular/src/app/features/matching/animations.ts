@@ -21,12 +21,8 @@ export const slide = [
     animate('350ms')
   ]),
 
-  transition('right => hidden', [
+  transition('* => hidden', [
     animate('400ms')
-  ]),
-
-  transition('left => hidden', [
-    animate('400ms')
-  ]),
+  ])
 
 ])];
