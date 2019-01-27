@@ -4,7 +4,7 @@
 
         <div class="match">
 
-            <img [@fade]="state" src="{{currentMatching.url}}">
+            <img [@slide]="state" (@slide.done)="animationCallback($event)" src="{{currentMatching.url}}">
 
         </div>
 
@@ -14,14 +14,14 @@
 
         <div class="wrap">
 
-            <button (click)="noMatch(currentMatching)" color="warn" mat-fab>
+            <button (click)="toggleState('left')" color="warn" mat-fab>
                 <mat-icon>cancel</mat-icon>
             </button>
 
-            <button (click)="match(currentMatching)" color="primary" mat-fab>
+            <button (click)="toggleState('right')" color="primary" mat-fab>
                 <mat-icon>favorite</mat-icon>
             </button>
-                
+
         </div>
 
     </div>

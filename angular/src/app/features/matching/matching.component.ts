@@ -3,17 +3,18 @@ import { UserMatchResource } from './../../resources/user/match';
 import { Component } from '@angular/core';
 import { IUserImage } from 'src/app/resources/user';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { fade } from './animations';
+import { slide } from './animations';
 
 @Component({
     selector: 'matching',
     templateUrl: './matching.component.html',
     styleUrls: ['./matching.component.scss'],
-    animations: fade
+    animations: slide
 
 })
 export class MatchingComponent {
-    //state = 'in';
+
+    state = 'mid';
     /**  */
     loadingComplete = false;
 
@@ -39,7 +40,7 @@ export class MatchingComponent {
     }
 
     /**
-     * 
+     *
      */
     reloadMatches() {
         this.userMatchResource.query({user_id: this.authService.currentUser().id})
@@ -49,8 +50,8 @@ export class MatchingComponent {
     }
 
     /**
-     * 
-     * @param images 
+     *
+     * @param images
      */
     pickAnyImage(images: IUserImage[]) {
         if (images.length > 0) {
@@ -61,46 +62,33 @@ export class MatchingComponent {
     }
 
     /**
-     * 
+     *
      */
     pickAndPopNextImage() {
         return this.currentMatching = this.loadedMatches.pop();
     }
 
     /**
-     * 
-     * @param image 
+     *
+     * @param image
      */
     match(image: IUserImage) {
-        this.effectiveMatching(image, true);   
-    }
-    
-    /**
-     * 
-     * @param image 
-     */
-    noMatch(image: IUserImage) {
-        this.effectiveMatching(image, false);   
+        this.effectiveMatching(image, true);
     }
 
-    /*
-    * called after inital animation is finshed
-    *
-    onDone($event) {
-        this.toggleState();
-    }
-    
-    * changes state of trigger
-    *
-    toggleState() {
-        this.state = this.state === 'in' ? 'out' : 'in';
-    }
-    */
-    
     /**
-     * 
-     * @param image 
-     * @param match 
+     *
+     * @param image
+     */
+    noMatch(image: IUserImage) {
+        this.effectiveMatching(image, false);
+    }
+
+
+    /**
+     *
+     * @param image
+     * @param match
      */
     protected effectiveMatching(image: IUserImage, match: boolean) {
         this.userMatchResource.match({
@@ -127,5 +115,28 @@ export class MatchingComponent {
         }
         return a;
     }
+
+
+    /**
+    * for slide animation
+    */
+
+  animationCallback(event$){
+    if(this.state==='left'){
+      this.noMatch(this.currentMatching);
+      this.state='hidden';
+    } else if(this.state==='right') {
+      this.match(this.currentMatching)
+      this.state='hidden';
+    } else if(this.state==='hidden') {
+      this.state='mid';
+    }
+  }
+
+  toggleState(newState: string) {
+    if(this.state === 'mid'){
+      this.state = newState;
+    }
+  }
 
 }
