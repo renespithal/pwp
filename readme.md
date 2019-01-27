@@ -31,7 +31,7 @@
 
 `cp $root/.env.example $root/.env` Environmentdatei kopieren 
 
-`APP_URL` in der Datei `$root/.env` konfigurieren (z.B. http://localhost oder http://pwp.dev) 
+`APP_URL` und Datenbankverbindung in der Datei `$root/.env` konfigurieren (z.B. http://localhost oder http://pwp.dev) 
 
 4: Angular build
 
