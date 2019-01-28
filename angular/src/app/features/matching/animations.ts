@@ -23,6 +23,12 @@ export const slide = [
 
   transition('* => hidden', [
     animate('400ms')
+  ]),
+  
+  transition(':enter', [
+    style({transform: 'translateY(100%)'}),
+    animate('0.7s ease-in-out', style({transform: 'translateY(0%)'}))
   ])
+
 
 ])];
