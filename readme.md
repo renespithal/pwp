@@ -1,5 +1,8 @@
 # Mentoree
 
+- Live-Installation zu finden unter: http://pwp.tesders.de
+- Das exportieren der Korrelationsdaten erfolgt mit dem aufruf /export, also z.B. http://pwp.tesders.de/export
+
 
 #### Vorrausetzungen:
 - PHP 7.1
